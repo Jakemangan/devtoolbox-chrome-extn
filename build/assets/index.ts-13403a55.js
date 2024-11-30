@@ -1,0 +1,1 @@
+console.log("background is running");chrome.runtime.onMessage.addListener(o=>{o.type==="COUNT"&&console.log("background has received a message from popup, and count is ",o==null?void 0:o.count)});chrome.omnibox.onInputEntered.addListener(o=>{chrome.tabs.create({url:chrome.runtime.getURL("dashboard.html")})});chrome.omnibox.setDefaultSuggestion({description:"Open Dashboard"});
