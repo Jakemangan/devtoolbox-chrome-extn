@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import { crx } from '@crxjs/vite-plugin'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import react from '@vitejs/plugin-react'
+import commonjs from 'vite-plugin-commonjs'
 
 import manifest from './src/manifest'
 import * as path from 'path'
@@ -26,7 +27,7 @@ export default defineConfig(({ mode }) => {
       },
     },
 
-    plugins: [crx({ manifest }), react(), tsconfigPaths()],
+    plugins: [crx({ manifest }), react(), tsconfigPaths(), commonjs()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import './Popup.css'
-import { Button } from '@/components/shadcn/ui/button'
+import { Button } from '@chakra-ui/react'
 
 export const Popup = () => {
   const [count, setCount] = useState(0)
