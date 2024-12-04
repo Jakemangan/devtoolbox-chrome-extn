@@ -1,0 +1,47 @@
+// .ios-scrollbar-dark {
+//     // scrollbar-width: thin;
+//     // scrollbar-color: #494949 #1D1D1D; // Dark mode colors
+  
+//     ::-webkit-scrollbar {
+//         height: 52px;
+//         width: 52px;
+//         background: #ff3434;
+//     }
+    
+//     ::-webkit-scrollbar-thumb {
+//         background: #eae9df;
+//         -webkit-border-radius: 1ex;
+//         -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+//     }
+    
+//     ::-webkit-scrollbar-corner {
+//         background: #ff7474;
+//     }
+
+//   }
+
+
+.ios-scrollbar-dark::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+    background: #1D1D1D;
+}
+
+
+.ios-scrollbar-dark::-webkit-scrollbar-thumb {
+    background: #606060;
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+}
+    
+.ios-scrollbar-dark::-webkit-scrollbar-corner {
+    background: #606060;
+}
+
+.sidebar-bottom-div{
+    min-height: 120px;
+
+    div{
+        background-color: #3F3F46;
+    }
+}

@@ -1,3 +1,5 @@
+import 'src/styles.scss'
+import './Dashboard.scss'
 import { cn } from '@/lib/utils'
 import { Button, Text } from '@chakra-ui/react'
 import { useState } from 'react'
@@ -204,7 +206,7 @@ export const Dashboard = () => {
 
   return (
     <div className="flex min-h-screen">
-      <div className="w-96 border-r bg-white p-6 overflow-y-auto max-h-screen">
+      <div className="w-96 border-r sidebar-bg p-6 overflow-y-auto max-h-screen ios-scrollbar-dark">
         <div className="flex flex-col">
           {routes.slice(0, 1).map((route) => (
             <RouteButton route={route} activeRoute={activeRoute} setActiveRoute={setActiveRoute} />
@@ -229,7 +231,9 @@ export const Dashboard = () => {
           ))}
         </div>
       </div>
-      <ActiveRouteDisplay activeRoute={activeRoute} />
+      <div className="main-content-bg flex-1">
+        <ActiveRouteDisplay activeRoute={activeRoute} />
+      </div>
     </div>
   )
 }

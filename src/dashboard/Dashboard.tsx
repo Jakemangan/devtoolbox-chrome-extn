@@ -1,5 +1,7 @@
+import 'src/styles.scss'
+import './Dashboard.scss'
 import { cn } from '@/lib/utils'
-import { Button, Text } from '@chakra-ui/react'
+import { Button, Text, VStack } from '@chakra-ui/react'
 import { useState } from 'react'
 import {
   FaClock,
@@ -179,13 +181,15 @@ const RouteButton = ({
     key={route.title}
     display="flex"
     justifyContent="flex-start"
-    borderRadius="xl"
+    borderRadius="sm"
     gap={2}
-    h="8"
+    h={9}
+    fontWeight="medium"
+    color="gray.200"
     fontSize={'md'}
-    pl={2}
+    pl={3}
     w="full"
-    bg={activeRoute === route.title ? 'gray.200' : 'transparent'}
+    bg={activeRoute === route.title ? 'gray.700' : 'transparent'}
     _hover={{
       bg: activeRoute === route.title ? 'zinc.500' : 'zinc.100',
     }}
@@ -204,8 +208,8 @@ export const Dashboard = () => {
 
   return (
     <div className="flex min-h-screen">
-      <div className="w-96 border-r bg-white p-6 overflow-y-auto max-h-screen">
-        <div className="flex flex-col">
+      <VStack className="w-96 sidebar-bg  max-h-screen">
+        <div className="flex flex-col overflow-y-scroll w-full p-4 ios-scrollbar-dark">
           {routes.slice(0, 1).map((route) => (
             <RouteButton route={route} activeRoute={activeRoute} setActiveRoute={setActiveRoute} />
           ))}
@@ -228,8 +232,20 @@ export const Dashboard = () => {
             <RouteButton route={route} activeRoute={activeRoute} setActiveRoute={setActiveRoute} />
           ))}
         </div>
+        <div className="sidebar-bottom-div p-4 w-full">
+          {/* <div className=""> */}
+          <VStack align="flex-start" justify="center" className="h-full w-full rounded-md p-2">
+            <Text fontWeight="medium" pb={0}>
+              Logged in person
+            </Text>
+            <Text className="text-sm text-gray-400">loggedInPerson@email.com</Text>
+          </VStack>
+          {/* </div> */}
+        </div>
+      </VStack>
+      <div className="main-content-bg flex-1 p-4">
+        <ActiveRouteDisplay activeRoute={activeRoute} />
       </div>
-      <ActiveRouteDisplay activeRoute={activeRoute} />
     </div>
   )
 }

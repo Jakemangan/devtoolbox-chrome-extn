@@ -1,5 +1,5 @@
 {
-  "name": "toolbox",
+  "name": "toolbox ➡️ Dev",
   "description": "",
   "version": "0.0.0",
   "manifest_version": 3,
@@ -21,12 +21,12 @@
   },
   "content_scripts": [
     {
-      "js": [
-        "assets/index.ts-loader-b714de0f.js"
-      ],
       "matches": [
         "http://*/*",
         "https://*/*"
+      ],
+      "js": [
+        "src/contentScript/index.ts-loader.js"
       ]
     }
   ],
@@ -38,9 +38,6 @@
   },
   "web_accessible_resources": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
       "resources": [
         "img/logo-16.png",
         "img/logo-34.png",
@@ -50,15 +47,17 @@
         "assets/*",
         "src/dashboard/*"
       ],
-      "use_dynamic_url": false
+      "matches": [
+        "<all_urls>"
+      ]
     },
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "<all_urls>"
       ],
       "resources": [
-        "assets/index.ts-5135a214.js"
+        "**/*",
+        "*"
       ],
       "use_dynamic_url": false
     }
