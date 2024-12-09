@@ -1,0 +1,47 @@
+.copy-text {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.copy-container:hover .copy-text {
+  opacity: 1;
+}
+    
+.opacity-animate {
+  animation: fadeIn 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.input-container {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem; // matches borderRadius="lg"
+    padding: 2px;
+    background: var(--ppo-gradient); // adjust gradient colors as needed
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &.show-gradient::before {
+    opacity: 1;
+  }
+}
+
+.border-invisible {
+    border-color: var(--content-card-bg);
+}

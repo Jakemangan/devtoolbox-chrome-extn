@@ -20,11 +20,16 @@
 
 //   }
 
+.sidebar-border{
+    background-image: var(--ppo-gradient-vert);
+    width: 1px;
+    
+}
 
 .ios-scrollbar-dark::-webkit-scrollbar {
     height: 6px;
     width: 6px;
-    background: #1D1D1D;
+    background: var(--content-card-bg);
 }
 
 

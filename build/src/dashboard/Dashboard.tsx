@@ -1,7 +1,7 @@
 import 'src/styles.scss'
 import './Dashboard.scss'
 import { cn } from '@/lib/utils'
-import { Button, Text } from '@chakra-ui/react'
+import { Button, Text, VStack } from '@chakra-ui/react'
 import { useState } from 'react'
 import {
   FaClock,
@@ -16,6 +16,7 @@ import {
   FaImage,
   FaCrop,
   FaEyeSlash,
+  FaCrown,
 } from 'react-icons/fa6'
 import { FaAngleDoubleUp, FaAngleDoubleDown } from 'react-icons/fa'
 import { LuBinary, LuFileJson2 } from 'react-icons/lu'
@@ -33,7 +34,7 @@ const routes = [
   },
   {
     title: 'String case converter',
-    icon: <RiDoubleQuotesL className="h-4 w-4" />,
+    icon: <Text>Aa</Text>,
   },
   {
     title: 'Hidden character reveal',
@@ -68,7 +69,7 @@ const routes = [
     icon: <FaMarkdown className="h-4 w-4" />,
   },
   {
-    title: 'Regex Tester',
+    title: 'Regex Debugger',
     icon: <BsRegex className="h-4 w-4" />,
   },
   {
@@ -172,30 +173,40 @@ const RouteButton = ({
   route,
   activeRoute,
   setActiveRoute,
+  isPremium,
 }: {
   route: (typeof routes)[0]
   activeRoute: string
   setActiveRoute: (route: string) => void
+  isPremium: boolean
 }) => (
   <Button
     key={route.title}
     display="flex"
     justifyContent="flex-start"
-    borderRadius="xl"
+    borderRadius="sm"
     gap={2}
-    h="8"
+    h={9}
+    fontWeight="medium"
+    color="gray.300"
     fontSize={'md'}
-    pl={2}
+    pl={3}
     w="full"
-    bg={activeRoute === route.title ? 'gray.200' : 'transparent'}
+    opacity={isPremium ? 0.5 : 1}
+    cursor={isPremium ? 'not-allowed' : 'pointer'}
+    position="relative"
+    bg={activeRoute === route.title ? 'gray.700' : 'transparent'}
     _hover={{
-      bg: activeRoute === route.title ? 'zinc.500' : 'zinc.100',
+      bg: isPremium ? 'transparent' : activeRoute === route.title ? 'zinc.500' : 'zinc.100',
     }}
     onClick={() => {
-      setActiveRoute(route.title)
-      console.log(route.title)
+      if (!isPremium) {
+        setActiveRoute(route.title)
+        console.log(route.title)
+      }
     }}
   >
+    {isPremium && <FaCrown className="absolute -top-1 -right-1 text-yellow-400" size={12} />}
     {route.icon}
     <Text pl={1}>{route.title}</Text>
   </Button>
@@ -206,32 +217,63 @@ export const Dashboard = () => {
 
   return (
     <div className="flex min-h-screen">
-      <div className="w-96 border-r sidebar-bg p-6 overflow-y-auto max-h-screen ios-scrollbar-dark">
-        <div className="flex flex-col">
+      <VStack className="w-96 content-card-bg max-h-screen">
+        <div className="flex flex-col overflow-y-scroll w-full p-4 ios-scrollbar-dark">
           {routes.slice(0, 1).map((route) => (
-            <RouteButton route={route} activeRoute={activeRoute} setActiveRoute={setActiveRoute} />
+            <RouteButton
+              route={route}
+              activeRoute={activeRoute}
+              setActiveRoute={setActiveRoute}
+              isPremium={false}
+            />
           ))}
-          <Text gap={2} fontSize="lg" mt={2}>
+          <Text gap={2} fontSize="lg" mt={2} fontWeight="medium">
             Utilities
           </Text>
           {routes.slice(1).map((route) => (
-            <RouteButton route={route} activeRoute={activeRoute} setActiveRoute={setActiveRoute} />
+            <RouteButton
+              route={route}
+              activeRoute={activeRoute}
+              setActiveRoute={setActiveRoute}
+              isPremium={false}
+            />
           ))}
-          <Text gap={2} fontSize="lg" mt={2}>
+          <Text gap={2} fontSize="lg" mt={2} fontWeight="medium">
             Image tools
           </Text>
           {imageRoutes.map((route) => (
-            <RouteButton route={route} activeRoute={activeRoute} setActiveRoute={setActiveRoute} />
+            <RouteButton
+              route={route}
+              activeRoute={activeRoute}
+              setActiveRoute={setActiveRoute}
+              isPremium={false}
+            />
           ))}
-          <Text gap={2} fontSize="lg" mt={2}>
+          <Text gap={2} fontSize="lg" mt={2} fontWeight="medium">
             LLM tools
           </Text>
           {llmRoutes.map((route) => (
-            <RouteButton route={route} activeRoute={activeRoute} setActiveRoute={setActiveRoute} />
+            <RouteButton
+              route={route}
+              activeRoute={activeRoute}
+              setActiveRoute={setActiveRoute}
+              isPremium={false}
+            />
           ))}
         </div>
-      </div>
-      <div className="main-content-bg flex-1">
+        <div className="sidebar-bottom-div p-4 w-full">
+          {/* <div className=""> */}
+          <VStack align="flex-start" justify="center" className="h-full w-full rounded-md p-2">
+            <Text fontWeight="medium" pb={0}>
+              Logged in person
+            </Text>
+            <Text className="text-sm text-gray-400">loggedInPerson@email.com</Text>
+          </VStack>
+          {/* </div> */}
+        </div>
+      </VStack>
+      {/* <div className="sidebar-border"></div> */}
+      <div className="content-bg flex-1">
         <ActiveRouteDisplay activeRoute={activeRoute} />
       </div>
     </div>

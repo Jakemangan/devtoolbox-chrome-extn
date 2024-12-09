@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { Box, Input, Text, VStack, Heading, Container, Button, HStack } from '@chakra-ui/react'
 import { FaCopy } from 'react-icons/fa6'
+import './StringCaseConverter.scss'
+import 'src/styles.scss'
+import GradientBackground from 'src/components/shared/GradientBackground'
+import TitleBar from '@/components/shared/TitleBar'
 
 const StringCaseConverter: React.FC = () => {
   const [input, setInput] = useState('')
@@ -44,55 +48,99 @@ const StringCaseConverter: React.FC = () => {
     setInput(text)
   }
 
-  const getOutputComponent = (label: string, mutatedText: string) => (
-    <HStack w="full" justify="space-between">
-      <Text color="gray.800" fontWeight="semibold">
-        {label}
-      </Text>
-      <Text fontSize="sm" color="gray.800">
-        {mutatedText}
-      </Text>
-      <Button
-        bg="gray.200"
-        p="2"
-        h="6"
-        onClick={() => copyToClipboard(mutatedText)}
-        size="sm"
-        fontSize="xs"
-        ml={2}
-      >
-        <FaCopy className="text-gray-700" />
-      </Button>
-    </HStack>
-  )
-
-  return (
-    <Container centerContent py={8}>
-      <Box p={6} maxW="lg" minW="600px" borderWidth={1} borderRadius="lg" boxShadow="md" bg="white">
-        <VStack spaceY={6}>
-          <Heading size="lg" color="gray.800">
-            <strong>String Case Converter</strong>
-          </Heading>
-          <HStack w="full">
-            <Input
-              placeholder="Enter text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              variant="outline"
-              borderColor="teal.400"
-            />
+  const getOutputComponent = (label: string, example: string, mutatedText: string) => (
+    <Box className="g copy-container" borderRadius="lg">
+      <Box w={96} className="content-card-bg border border-neutral-700" minH="24" borderRadius="md">
+        <VStack w="full" justify="space-between" gap={0} alignItems="start">
+          <HStack
+            justify="space-between"
+            w="full"
+            h="20%"
+            className="bg-neutral-800 "
+            borderTopLeftRadius="lg"
+            borderTopRightRadius="lg"
+            p="2"
+          >
+            <VStack align="start" gap={0}>
+              <Text>{label}</Text>
+              <Text fontSize="xs" className="text-neutral-500">
+                {example}
+              </Text>
+            </VStack>
+            <Text
+              mr="1"
+              onClick={() => copyToClipboard(mutatedText)}
+              cursor="pointer"
+              fontSize="xs"
+              className="copy-text"
+            >
+              Copy
+            </Text>
           </HStack>
-          <VStack align="start" spaceY={2} w="full">
-            {getOutputComponent('Lower Case', input.toLowerCase())}
-            {getOutputComponent('Upper Case', input.toUpperCase())}
-            {getOutputComponent('Kebab Case', toKebabCase(input) ?? '')}
-            {getOutputComponent('Snake Case', toSnakeCase(input) ?? '')}
-            {getOutputComponent('Pascal Case', toPascalCase(input) ?? '')}
-            {getOutputComponent('Camel Case', toCamelCase(input) ?? '')}
+          <VStack w="full" h="80%" my={4} borderRadius="lg" p="2">
+            {mutatedText === '' ? (
+              <Text fontSize="md" color="gray.600" fontWeight="medium">
+                No input
+              </Text>
+            ) : (
+              <Text fontSize="md">{mutatedText}</Text>
+            )}
           </VStack>
         </VStack>
       </Box>
-    </Container>
+    </Box>
+  )
+
+  return (
+    <VStack>
+      <TitleBar title="String Case Converter" />
+      <Container centerContent py={8}>
+        <VStack>
+          <Box p={4} minW="600px" borderRadius="lg" boxShadow="md">
+            <VStack w="full">
+              <GradientBackground showGradient={input !== ''}>
+                <Box
+                  w="full"
+                  p={0}
+                  pl={2}
+                  boxSizing="border-box"
+                  className={`content-card-bg border ${input === '' ? 'border-neutral-700' : 'border-invisible'}`}
+                  borderRadius="lg"
+                >
+                  <Input
+                    placeholder="Text to convert"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    variant="outline"
+                    outline="none"
+                    _placeholder={{ color: 'gray.500', fontWeight: 'medium' }}
+                  />
+                </Box>
+              </GradientBackground>
+              <HStack justify="start" w="full">
+                <Text fontSize="md" fontWeight="medium" className="text-neutral-500">
+                  Outputs
+                </Text>
+              </HStack>
+              <VStack align="start" spaceY={0} w="full" alignItems="center" gap={6}>
+                <HStack gap={6}>
+                  {getOutputComponent('Lower Case', 'xxxxxxx', input.toLowerCase())}
+                  {getOutputComponent('Upper Case', 'XXXXXXX', input.toUpperCase())}
+                </HStack>
+                <HStack gap={6}>
+                  {getOutputComponent('Kebab Case', 'xxx-xxx-xxx', toKebabCase(input) ?? '')}
+                  {getOutputComponent('Snake Case', 'xxx_xxx_xxx', toSnakeCase(input) ?? '')}
+                </HStack>
+                <HStack gap={6}>
+                  {getOutputComponent('Pascal Case', 'XxxXxxXxx', toPascalCase(input) ?? '')}
+                  {getOutputComponent('Camel Case', 'xxxXxxXxx', toCamelCase(input) ?? '')}
+                </HStack>
+              </VStack>
+            </VStack>
+          </Box>
+        </VStack>
+      </Container>
+    </VStack>
   )
 }
 
