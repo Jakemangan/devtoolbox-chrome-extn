@@ -6,7 +6,7 @@ import UnixTimestampConverter from './Utilities/UnixTimestampConverter'
 import JsonFormatter from './Utilities/JsonFormatter'
 import Base64EncodeDecode from './Utilities/Base64EncodeDecode'
 import JwtTools from './Utilities/JwtTools'
-import { Box, VStack, Text } from '@chakra-ui/react'
+import { Box, VStack, Text, HStack } from '@chakra-ui/react'
 
 interface ActiveRouteDisplayProps {
   activeRoute: string
@@ -58,7 +58,14 @@ const ActiveRouteDisplay: React.FC<ActiveRouteDisplayProps> = ({ activeRoute }) 
     }
   }
 
-  return getActiveRouteComponent()
+  return (
+    <VStack justify="space-between" h="full">
+      {getActiveRouteComponent()}
+      <HStack h="12" w="full" className="border-t border-neutral-700" justify="center">
+        <Text className="text-neutral-500" fontSize="sm">Made with ❤️ by JM</Text>
+      </HStack>
+    </VStack>
+  )
 }
 
 export default ActiveRouteDisplay

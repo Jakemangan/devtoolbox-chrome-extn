@@ -92,11 +92,11 @@ const StringCaseConverter: React.FC = () => {
   )
 
   return (
-    <VStack>
+    <VStack w="full">
       <TitleBar title="String Case Converter" />
       <Container centerContent py={8}>
         <VStack>
-          <Box p={4} minW="600px" borderRadius="lg" boxShadow="md">
+          <Box p={4} minW="600px" borderRadius="lg">
             <VStack w="full">
               <GradientBackground showGradient={input !== ''}>
                 <Box
@@ -117,7 +117,7 @@ const StringCaseConverter: React.FC = () => {
                   />
                 </Box>
               </GradientBackground>
-              <HStack justify="start" w="full">
+              <HStack justify="start" w="full" mt={4}>
                 <Text fontSize="md" fontWeight="medium" className="text-neutral-500">
                   Outputs
                 </Text>

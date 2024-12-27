@@ -1,28 +1,43 @@
-body{
-    color: white;
+body {
+  color: white;
+  background-color: #1f1f1f;
 }
 
-:root{
-    --content-card-bg: #2d2d2d;
-    --content-bg: #1f1f1f;
-    --ppo-gradient: -webkit-gradient(linear, left top, right top, color-stop(0.0, rgb(159, 123, 251)), color-stop(0.2, rgb(255, 94, 121)), color-stop(1, rgb(255, 191, 130)));
-    --ppo-gradient-vert: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, rgb(159, 123, 251)), color-stop(0.2, rgb(255, 94, 121)), color-stop(1, rgb(255, 191, 130)));
+:root {
+  --content-card-bg: #2d2d2d;
+  --content-bg: #1f1f1f;
+  --ppo-gradient: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0, rgb(159, 123, 251)),
+    color-stop(0.2, rgb(255, 94, 121)),
+    color-stop(1, rgb(255, 191, 130))
+  );
+  --ppo-gradient-vert: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, rgb(159, 123, 251)),
+    color-stop(0.2, rgb(255, 94, 121)),
+    color-stop(1, rgb(255, 191, 130))
+  );
 }
 
-.content-card-bg{
-    background-color: var(--content-card-bg);
+.content-card-bg {
+  background-color: var(--content-card-bg);
 }
 
-.content-bg{
-    background-color: var(--content-bg);
+.content-bg {
+  background-color: var(--content-bg);
 }
 
 .g {
-    background-image: var(--ppo-gradient);
-    // padding: 1px;
-  }
+  background-image: var(--ppo-gradient);
+  // padding: 1px;
+}
 
 .white-shadow {
-position: relative;
-box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.05);
+  position: relative;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.05);
 }
