@@ -49,7 +49,6 @@ const TodoList = () => {
 
   return (
     <VStack w="full" h="full" gap={0}>
-      <TitleBar title="Todo List" />
       <Container maxW="container.xl" py={8} h="full">
         <Button colorScheme="blue" onClick={addTodo} mb={4}>
           Add Todo

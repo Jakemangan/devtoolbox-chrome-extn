@@ -48,6 +48,14 @@ Dev Vitals [❤️]
 Landing page 
 - Live stats for downloads, new users joined, product hunt banner
 
+
+- Dashboard
+    - Welcome message
+    - Favourited/starred tools 
+    - Feedback box
+    - Suggest a feature 
+
+    
 Other tools
 - Color palette reference for popular UI libraries e.g. chakra, tailwind etc 
 - Bookmarks 
@@ -62,17 +70,23 @@ Other tools
 - Export element and save 
 - Ruler 
 - Text to QR / QR to text
-- https://github.com/libgenai/devtoolbox
-- https://github.com/gumbarros/DevWidgets?tab=readme-ov-file
-- https://devtoys.app/
-- https://github.com/fluttergems/awesome-open-source-flutter-apps?tab=readme-ov-file
 - Convert text to openDyslexia 
 - Screenshot tool 
 - To do list
 - Trello/Kanban board
+- Screenblurrer
 - Privacy screen
     - Shows network requests 
     - Link to network devtools
+- Refresh/clear cache
+
+
+Tool inspiration
+- https://github.com/libgenai/devtoolbox
+- https://github.com/gumbarros/DevWidgets?tab=readme-ov-file
+- https://devtoys.app/
+- https://github.com/fluttergems/awesome-open-source-flutter-apps?tab=readme-ov-file
+- https://chromewebstore.google.com/detail/web-developer/bfbameneiokkgbdmiekhjnmfkcnldhhm
 
 
 Premium features

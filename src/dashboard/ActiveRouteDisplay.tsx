@@ -8,6 +8,8 @@ import Base64EncodeDecode from './Utilities/Base64EncodeDecode'
 import JwtTools from './Utilities/JwtTools'
 import { Box, VStack, Text, HStack } from '@chakra-ui/react'
 import TodoList from './Utilities/TodoList'
+import TitleBar from '@/components/shared/TitleBar'
+import DashboardHome from './Utilities/DashboardHome'
 
 interface ActiveRouteDisplayProps {
   activeRoute: string
@@ -16,8 +18,8 @@ interface ActiveRouteDisplayProps {
 const ActiveRouteDisplay: React.FC<ActiveRouteDisplayProps> = ({ activeRoute }) => {
   const getActiveRouteComponent = () => {
     switch (activeRoute) {
-      case 'Dashboard':
-        return <div>Dashboard Content</div>
+      case 'Home':
+        return <DashboardHome />
       case 'String case converter':
         return <StringCaseConverter />
       case 'Hidden character reveal':
@@ -62,8 +64,11 @@ const ActiveRouteDisplay: React.FC<ActiveRouteDisplayProps> = ({ activeRoute }) 
   }
 
   return (
-    <VStack justify="space-between" h="full">
-      {getActiveRouteComponent()}
+    <VStack justify="space-between" h="full" gap={0}>
+      {activeRoute !== 'Home' && <TitleBar title={activeRoute} />}
+      <Box flex="1" w="full" overflowY="auto">
+        {getActiveRouteComponent()}
+      </Box>
       <HStack h="12" w="full" className="border-t border-neutral-700" justify="center">
         <Text className="text-neutral-500" fontSize="sm">
           Made with ❤️ by JM

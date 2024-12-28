@@ -50,11 +50,11 @@ const routes = [
     icon: <LuBinary className="h-4 w-4" />,
     isPremium: false,
   },
-  {
-    title: 'Todo list',
-    icon: <FaList className="h-4 w-4" />,
-    isPremium: false,
-  },
+  // {
+  //   title: 'Todo list',
+  //   icon: <FaList className="h-4 w-4" />,
+  //   isPremium: false,
+  // },
   {
     title: 'Unix timestamp converter',
     icon: <FaClock className="h-4 w-4" />,
@@ -297,7 +297,7 @@ export const Dashboard = () => {
         </div>
       </VStack>
       {/* <div className="sidebar-border"></div> */}
-      <div className="content-bg flex-1">
+      <div className="content-bg flex-1 max-h-screen">
         <ActiveRouteDisplay activeRoute={activeRoute} />
       </div>
     </div>

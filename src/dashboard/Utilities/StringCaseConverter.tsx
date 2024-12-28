@@ -52,8 +52,8 @@ const StringCaseConverter: React.FC = () => {
     <Box className="g copy-container" borderRadius="lg">
       <Box
         w={96}
-        maxH="96"
-        overflowY="scroll"
+        // maxH="96"
+        // overflowY="auto"
         className="content-card-bg border border-neutral-700"
         minH="24"
         borderRadius="md"
@@ -90,9 +90,11 @@ const StringCaseConverter: React.FC = () => {
                 No input
               </Text>
             ) : (
-              <Text fontSize="md" lineBreak="anywhere">
-                {mutatedText}
-              </Text>
+              <Box maxH="96" overflowY="auto">
+                <Text fontSize="md" lineBreak="anywhere">
+                  {mutatedText}
+                </Text>
+              </Box>
             )}
           </VStack>
         </VStack>
@@ -102,7 +104,6 @@ const StringCaseConverter: React.FC = () => {
 
   return (
     <VStack w="full">
-      <TitleBar title="String Case Converter" />
       <Container centerContent py={8}>
         <VStack>
           <Box p={4} minW="600px" borderRadius="lg">

@@ -29,7 +29,6 @@ const HiddenCharacterReveal: React.FC = () => {
 
   return (
     <VStack w="full" h="full">
-      <TitleBar title="Hidden Character Reveal" />
       <Container centerContent py={8} h="full">
         <HStack w="full" h="full">
           <VStack flex={1} h="75vh">
@@ -53,11 +52,12 @@ const HiddenCharacterReveal: React.FC = () => {
                       outline="none"
                       h="full"
                       maxH="full"
-                      overflowY="scroll" /* Ensures vertical scrolling */
-                      resize="none" /* Prevents manual resizing */
+                      overflowY="auto"
+                      resize="none"
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
-                      placeholder="Paste your text here..."
+                      placeholder="Paste your text here"
+                      _placeholder={{ color: 'var(--text-neutral-500)' }}
                     />
                   </Box>
                 </Flex>
@@ -72,12 +72,11 @@ const HiddenCharacterReveal: React.FC = () => {
             </Text>
 
             <Box
-              id="this-one"
               p={6}
               lineBreak="anywhere"
               w="full"
               h="full"
-              overflowY="scroll"
+              overflowY="auto"
               className="content-card-bg border-neutral-700"
               borderWidth={1}
               borderRadius="lg"
