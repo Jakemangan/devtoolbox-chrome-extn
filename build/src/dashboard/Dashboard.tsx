@@ -17,6 +17,7 @@ import {
   FaCrop,
   FaEyeSlash,
   FaCrown,
+  FaList,
 } from 'react-icons/fa6'
 import { FaAngleDoubleUp, FaAngleDoubleDown } from 'react-icons/fa'
 import { LuBinary, LuFileJson2 } from 'react-icons/lu'
@@ -47,6 +48,11 @@ const routes = [
   {
     title: 'UUID generator',
     icon: <LuBinary className="h-4 w-4" />,
+    isPremium: false,
+  },
+  {
+    title: 'Todo list',
+    icon: <FaList className="h-4 w-4" />,
     isPremium: false,
   },
   {

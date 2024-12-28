@@ -50,7 +50,14 @@ const StringCaseConverter: React.FC = () => {
 
   const getOutputComponent = (label: string, example: string, mutatedText: string) => (
     <Box className="g copy-container" borderRadius="lg">
-      <Box w={96} className="content-card-bg border border-neutral-700" minH="24" borderRadius="md">
+      <Box
+        w={96}
+        maxH="96"
+        overflowY="scroll"
+        className="content-card-bg border border-neutral-700"
+        minH="24"
+        borderRadius="md"
+      >
         <VStack w="full" justify="space-between" gap={0} alignItems="start">
           <HStack
             justify="space-between"
@@ -83,7 +90,9 @@ const StringCaseConverter: React.FC = () => {
                 No input
               </Text>
             ) : (
-              <Text fontSize="md">{mutatedText}</Text>
+              <Text fontSize="md" lineBreak="anywhere">
+                {mutatedText}
+              </Text>
             )}
           </VStack>
         </VStack>

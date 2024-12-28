@@ -1,4 +1,4 @@
-const VITE_URL = "http://localhost:5173";
+const VITE_URL = "http://localhost:5174";
 document.body.innerHTML = `
 <div
       id="app"
